@@ -1,3 +1,4 @@
+{CompositeDisposable} = require 'atom'
 provider = require './provider'
-
-getProvider: -> provider
+module.exports =
+  getProvider: -> provider

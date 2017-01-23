@@ -1,7 +1,5 @@
 module.exports =
-class SnippetsProvider
-  selector: '*'
-  disableForSelector: '.arnoldc'
+  selector: '.source.arnoldc'
   inclusionPriority: 1
   suggestionPriority: 2
 
@@ -11,17 +9,12 @@ class SnippetsProvider
     @showIcon = atom.config.get('autocomplete-plus.defaultProvider') is 'Symbol'
 
 
+  getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix}) ->
+    new Promise (resolve) ->
+      resolve([text: 'something'])
 
+  onDidInsertSuggestion: ({editor, triggerPosition, suggestion}) ->
 
-  getSuggestions: ({scopeDescriptor, prefix}) ->
-    return unless prefix?.length
-    resolve = [text : 'something']
-    resolve
-    
-
-
-
-ascendingPrefixComparator = (a, b) -> a.text.localeCompare(b.text)
-
-firstCharsEqual = (str1, str2) ->
-  str1[0].toLowerCase() is str2[0].toLowerCase()
+  # (optional): called when your provider needs to be cleaned up. Unsubscribe
+  # from things, kill any processes, etc.
+  dispose: ->
