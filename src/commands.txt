@@ -1,5 +1,4 @@
 ParseError = "WHAT THE FUCK DID I DO WRONG"
-
 DeclareInt = "HEY CHRISTMAS TREE"
 SetInitialValue = "YOU SET US UP"
 BeginMain = "IT'S SHOWTIME"
@@ -32,6 +31,5 @@ CallMethod = "DO IT NOW"
 NonVoidMethod = "GIVE THESE PEOPLE AIR"
 AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
 Modulo = "I LET HIM GO"
-
 
 // Extract from https://github.com/lhartikk/ArnoldC/blob/master/src/main/scala/org/arnoldc/ArnoldParser.scala
