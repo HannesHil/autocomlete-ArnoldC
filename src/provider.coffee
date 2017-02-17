@@ -15,7 +15,7 @@ module.exports =
     for zeile in text then do (zeile) =>
       if  zeile is "" or  zeile.startsWith("//")
       else
-        completions.push (zeile.replace("\"", "").replace("\"", "").replace(" ", "").replace(" ", "").split("="))
+        completions.push (zeile.replace("\"", "").replace("\"", "").split(","))
     console.log completions
     return
 
@@ -24,7 +24,16 @@ module.exports =
     new Promise (resolve) ->
       suggestion = []
       for zeile in completions then do (zeile) =>
-        suggestion.push (displayText: zeile[1].substr(0,20),text: zeile[1], leftLabel:zeile[0],type: 'function' )
+        types = 'function'
+        if zeile[0].includes("Operator")
+          types = 'snippet'
+        left = zeile[0]
+        if zeile[2] != ''
+          left = zeile[2]
+        snippets = zeile[1]
+        if zeile[3] != ''
+          snippets = zeile[3]
+        suggestion.push (displayText: zeile[1].substr(0,20),snippet:snippets, leftLabel:left.substr(0,15),type: types )
       resolve suggestion
 
   onDidInsertSuggestion: ({editor, triggerPosition, suggestion}) ->
